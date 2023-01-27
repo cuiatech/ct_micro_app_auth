@@ -11,6 +11,23 @@ dependencies:
   flutter:
     sdk: flutter
 
+dependency_overrides:
+  flut_micro_commons_dependencies:
+    path: ../flut_micro_commons_dependencies
+    # git:
+    #   url: "https://github.com/cuiatech/flut_micro_commons_dependencies.git"
+    #   ref: "master"
+  flut_micro_commons_shared:
+    path: ../flut_micro_commons_shared
+    # git:
+    #   url: "https://github.com/cuiatech/flut_micro_commons_shared.git"
+    #   ref: "master"
+  flut_micro_commons_ds:
+    path: ../flut_micro_commons_ds
+    # git:
+    #   url: "https://github.com/cuiatech/flut_micro_commons_ds.git"
+    #   ref: "master"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
