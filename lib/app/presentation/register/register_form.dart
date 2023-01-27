@@ -42,7 +42,7 @@ class RegisterForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaButtons.elevated(
-            "Registrar",
+            "Cadastrar",
             onTap: () {
               _formKey.currentState!.validate();
             },

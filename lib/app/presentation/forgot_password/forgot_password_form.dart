@@ -1,16 +1,17 @@
+import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
+class ForgotPasswordForm extends StatelessWidget {
+  const ForgotPasswordForm({
     Key? key,
     required this.controller,
   }) : super(key: key);
 
-  final LoginController controller;
+  final ForgotPasswordController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -27,29 +28,8 @@ class LoginForm extends StatelessWidget {
             validateRules: const [Rule.required, Rule.email],
           ),
           const SizedBox(height: 33),
-          CuiaTextFormField(
-            controller: TextEditingController(),
-            hintText: "Senha",
-            prefixIcon: CuiaIcons.lock(),
-            validateRules: const [Rule.required],
-            obscureText: true,
-          ),
-          const SizedBox(height: 33),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: controller.goToForgotPassword,
-                child: CuiaButtons.link(
-                  "Esqueceu a senha?",
-                  onTap: controller.goToForgotPassword,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 33),
           CuiaButtons.elevated(
-            "Entrar",
+            "Enviar",
             onTap: () {
               _formKey.currentState!.validate();
             },
@@ -61,7 +41,7 @@ class LoginForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CuiaText(
-                "Não possui uma conta?",
+                "Já possui uma conta?",
                 style: GoogleFonts.poppins(
                   color: const Color(0xff393d6e),
                   fontSize: 16,
@@ -70,8 +50,8 @@ class LoginForm extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               CuiaButtons.link(
-                "Cadastre-se",
-                onTap: controller.goToRegister,
+                "Entrar",
+                onTap: controller.goToLogin,
               ),
             ],
           ),
