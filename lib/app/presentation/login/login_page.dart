@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = LoginController();
+    final controller = Modular.get<LoginController>();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,

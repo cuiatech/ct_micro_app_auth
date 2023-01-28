@@ -1,5 +1,6 @@
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_page.dart';
+import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/login/login_page.dart';
 import 'package:flut_micro_app_auth/app/presentation/register/register_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/register/register_page.dart';
@@ -10,6 +11,7 @@ class AppAuthModule extends Module {
   final List<Bind> binds = [
     // Controllers
     $RegisterController,
+    $LoginController,
   ];
 
   @override

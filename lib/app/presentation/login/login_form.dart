@@ -15,23 +15,26 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    bool isValid = true;
 
     return Form(
       key: _formKey,
       child: Column(
         children: [
           CuiaTextFormField(
-            controller: TextEditingController(),
+            controller: controller.emailTextController,
             hintText: "E-mail",
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
+            errorCallback: (_) => isValid = false,
           ),
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: TextEditingController(),
+            controller: controller.passwordTextController,
             hintText: "Senha",
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required],
+            errorCallback: (_) => isValid = false,
             obscureText: true,
           ),
           const SizedBox(height: 33),
@@ -50,8 +53,12 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 33),
           CuiaButtons.elevated(
             "Entrar",
-            onTap: () {
+            onTap: () async {
+              isValid = true;
               _formKey.currentState!.validate();
+              if (isValid) {
+                await controller.submit(context);
+              }
             },
           ),
           const SizedBox(height: 60),
