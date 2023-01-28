@@ -13,7 +13,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = RegisterController();
+    final controller = Modular.get<RegisterController>();
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
