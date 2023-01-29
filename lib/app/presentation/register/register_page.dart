@@ -18,20 +18,33 @@ class RegisterPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Row(
+      body: CuiaFlexRow(
         children: [
-          const LeftPanel(
-            child: Center(child: CuiaLogo()),
+          CuiaFlexColumn(
+            colS: 0,
+            colXS: 0,
+            colM: 5,
+            child: SizedBox(
+              height: size.height,
+              child: const LeftPanel(
+                child: Center(child: CuiaLogo()),
+              ),
+            ),
           ),
-          RightPanel(
-            child: LayoutBuilder(builder: (context, c) {
-              return SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  height: size.height,
-                  child: Center(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: c.maxWidth / 4),
+          CuiaFlexColumn(
+            colS: 12,
+            colXS: 12,
+            colM: 7,
+            child: RightPanel(
+              child: LayoutBuilder(builder: (context, c) {
+                return SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: c.maxWidth * 0.1,
+                    ),
+                    height: size.height,
+                    child: Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -50,9 +63,9 @@ class RegisterPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
+            ),
           ),
         ],
       ),

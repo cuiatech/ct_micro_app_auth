@@ -17,7 +17,7 @@ class AppAuthModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
-      RoutersName.index,
+      RoutersName.login,
       child: (_, args) => const LoginPage(),
       transition: TransitionType.noTransition,
     ),

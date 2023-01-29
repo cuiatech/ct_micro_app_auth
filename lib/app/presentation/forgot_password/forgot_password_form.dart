@@ -36,9 +36,7 @@ class ForgotPasswordForm extends StatelessWidget {
           ),
           const SizedBox(height: 60),
           Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CuiaText(
                 "Já possui uma conta?",
