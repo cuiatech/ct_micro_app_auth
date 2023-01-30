@@ -1,9 +1,12 @@
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
+import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_page.dart';
 import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/login/login_page.dart';
 import 'package:flut_micro_app_auth/app/presentation/register/register_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/register/register_page.dart';
+import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_controller.dart';
+import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_page.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 
 class AppAuthModule extends Module {
@@ -12,6 +15,8 @@ class AppAuthModule extends Module {
     // Controllers
     $RegisterController,
     $LoginController,
+    $UpdatePasswordController,
+    $ForgotPasswordController,
   ];
 
   @override
@@ -29,6 +34,11 @@ class AppAuthModule extends Module {
     ChildRoute(
       RoutersName.forgotPassword,
       child: (_, args) => const ForgotPasswordPage(),
+      transition: TransitionType.noTransition,
+    ),
+    ChildRoute(
+      RoutersName.updatePassword,
+      child: (_, args) => UpdatePasswordPage(args.queryParams['key'] ?? ''),
       transition: TransitionType.noTransition,
     ),
   ];

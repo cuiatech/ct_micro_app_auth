@@ -16,13 +16,14 @@ class ForgotPasswordForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    bool isValid = true;
 
     return Form(
       key: _formKey,
       child: Column(
         children: [
           CuiaTextFormField(
-            controller: TextEditingController(),
+            controller: controller.emailTextController,
             hintText: "E-mail",
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
@@ -30,8 +31,12 @@ class ForgotPasswordForm extends StatelessWidget {
           const SizedBox(height: 33),
           CuiaButtons.elevated(
             "Enviar",
-            onTap: () {
+            onTap: () async {
+              isValid = true;
               _formKey.currentState!.validate();
+              if (isValid) {
+                await controller.submit(context);
+              }
             },
           ),
           const SizedBox(height: 60),

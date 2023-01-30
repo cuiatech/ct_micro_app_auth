@@ -6,10 +6,13 @@ class AuthRouters {
   static goToRegister() => Modular.to.navigate('/auth${RoutersName.register}');
   static goToForgotPassword() =>
       Modular.to.navigate('/auth${RoutersName.forgotPassword}');
+  static goToUpdatePassword() =>
+      Modular.to.navigate('/auth${RoutersName.updatePassword}');
 }
 
 class RoutersName {
   static String login = "/";
   static String register = "/register";
   static String forgotPassword = "/forgot-password";
+  static String updatePassword = "/update-password";
 }

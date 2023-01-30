@@ -1,6 +1,5 @@
-import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
-import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_form.dart';
-import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
+import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_controller.dart';
+import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
@@ -9,13 +8,19 @@ import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 import '../../shared/widgets/left_panel.dart';
 import '../../shared/widgets/right_panel.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+class UpdatePasswordPage extends StatelessWidget {
+  const UpdatePasswordPage(
+    this.code, {
+    super.key,
+  });
+
+  final String code;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Modular.get<ForgotPasswordController>();
+    final controller = Modular.get<UpdatePasswordController>();
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CuiaFlexRow(
@@ -46,17 +51,19 @@ class ForgotPasswordPage extends StatelessWidget {
                     height: size.height,
                     child: Center(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CuiaText.headline1("Recuperar senha"),
+                          CuiaText.headline1("Atualizar senha"),
                           const SizedBox(height: 33),
                           CuiaText.subtitle1(
-                            "Informe seu e-mail que iremos lhe mandar os passos de recuperação de conta",
+                            "Por favor, preencha suas informações abaixo",
                           ),
                           const SizedBox(height: 33),
-                          ForgotPasswordForm(
+                          UpdatePasswordForm(
                             controller: controller,
+                            code: code,
                           ),
                         ],
                       ),
