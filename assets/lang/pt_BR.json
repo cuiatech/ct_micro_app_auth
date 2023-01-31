@@ -27,6 +27,5 @@
     "update-password-page-repeat-new-password-field": "Repetir Nova Senha",
     "update-password-page-submit-button": "Alterar",
     "update-password-page-submit-success": "Senha alterada",
-    "update-password-page-submit-error-passwords-diferents": "Erro: As senhas fornecidas não coincidem",
-    "a": ""
+    "update-password-page-submit-error-passwords-diferents": "Erro: As senhas fornecidas não coincidem"
 }

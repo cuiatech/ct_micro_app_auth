@@ -11,18 +11,15 @@ class LeftPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        color: Colors.blue,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(),
-            child,
-            const FooterWidget(),
-          ],
-        ),
+    return Container(
+      color: Colors.blue,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(),
+          child,
+          const FooterWidget(),
+        ],
       ),
     );
   }

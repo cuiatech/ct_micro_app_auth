@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
     final controller = Modular.get<LoginController>();
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       body: CuiaFlexRow(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [

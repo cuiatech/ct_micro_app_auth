@@ -10,8 +10,8 @@ class RightPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 2,
+    return Container(
+      color: Colors.white,
       child: child,
     );
   }
