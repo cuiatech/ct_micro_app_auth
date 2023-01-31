@@ -1,6 +1,7 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_form.dart';
-import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
@@ -49,11 +50,11 @@ class ForgotPasswordPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CuiaText.headline1("Recuperar senha"),
+                          CuiaText.headline1(
+                              "forgot-password-page-title".i18n()),
                           const SizedBox(height: 33),
                           CuiaText.subtitle1(
-                            "Informe seu e-mail que iremos lhe mandar os passos de recuperação de conta",
-                          ),
+                              "forgot-password-page-subtitle".i18n()),
                           const SizedBox(height: 33),
                           ForgotPasswordForm(
                             controller: controller,

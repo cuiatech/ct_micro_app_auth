@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_auth/app/domain/usecases/user_forgot_password_usecase.dart';
@@ -22,10 +24,11 @@ class ForgotPasswordController {
       '${Uri.base.origin}/auth${RoutersName.updatePassword}',
     );
     if (!res.success) {
-      CuiaToast.error(res.message ?? 'Error', context: context);
+      CuiaToast.error(res.message ?? 'error-generic'.i18n(), context: context);
       return;
     }
 
-    CuiaToast.success('E-mail de recuperação enviado', context: context);
+    CuiaToast.success('forgot-password-page-submit-success'.i18n(),
+        context: context);
   }
 }

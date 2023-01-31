@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
@@ -28,11 +30,11 @@ class RegisterController {
     );
 
     if (!res.success) {
-      CuiaToast.error(res.message ?? 'Error', context: context);
+      CuiaToast.error(res.message ?? 'error-generic'.i18n(), context: context);
       return;
     }
 
-    CuiaToast.success('Criado com sucesso!', context: context);
+    CuiaToast.success('register-page-submit-success'.i18n(), context: context);
     goToLogin();
   }
 }

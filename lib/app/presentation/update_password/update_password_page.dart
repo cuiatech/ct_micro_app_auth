@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/update_password/update_password_form.dart';
 import 'package:flutter/material.dart';
@@ -55,10 +57,11 @@ class UpdatePasswordPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CuiaText.headline1("Atualizar senha"),
+                          CuiaText.headline1(
+                              "update-password-page-title".i18n()),
                           const SizedBox(height: 33),
                           CuiaText.subtitle1(
-                            "Por favor, preencha suas informações abaixo",
+                            "update-password-page-subtitle".i18n(),
                           ),
                           const SizedBox(height: 33),
                           UpdatePasswordForm(

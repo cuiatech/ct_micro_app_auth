@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 import 'package:flut_micro_commons_auth/app/domain/usecases/user_login_usecase.dart';
@@ -27,7 +29,7 @@ class LoginController {
     );
 
     if (!res.success) {
-      CuiaToast.error(res.message ?? 'Error', context: context);
+      CuiaToast.error(res.message ?? 'error-generic'.i18n(), context: context);
       return;
     }
 

@@ -31,14 +31,17 @@ class UpdatePasswordController {
         passwordTextController.text,
       );
       if (!res.success) {
-        CuiaToast.error(res.message ?? 'Error', context: context);
+        CuiaToast.error(res.message ?? 'error-generic'.i18n(),
+            context: context);
         return;
       }
 
-      CuiaToast.success('Senha alterada', context: context);
+      CuiaToast.success('update-password-page-submit-success'.i18n(),
+          context: context);
       goToLogin();
     } else {
-      CuiaToast.error('Erro: As senhas fornecidas não coincidem',
+      CuiaToast.error(
+          'update-password-page-submit-error-passwords-diferents'.i18n(),
           context: context);
       return;
     }

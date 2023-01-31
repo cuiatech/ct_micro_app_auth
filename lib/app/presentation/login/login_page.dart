@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
@@ -49,11 +51,9 @@ class LoginPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CuiaText.headline1("Login"),
+                          CuiaText.headline1("login-page-title".i18n()),
                           const SizedBox(height: 33),
-                          CuiaText.subtitle1(
-                            "Por favor, preencha suas informações abaixo",
-                          ),
+                          CuiaText.subtitle1("login-page-subtitle".i18n()),
                           const SizedBox(height: 33),
                           LoginForm(
                             controller: controller,

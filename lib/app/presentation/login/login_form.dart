@@ -23,7 +23,7 @@ class LoginForm extends StatelessWidget {
         children: [
           CuiaTextFormField(
             controller: controller.emailTextController,
-            hintText: "E-mail",
+            hintText: "login-page-email-field".i18n(),
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
             errorCallback: (_) => isValid = false,
@@ -31,7 +31,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 33),
           CuiaTextFormField(
             controller: controller.passwordTextController,
-            hintText: "Senha",
+            hintText: "login-page-password-field".i18n(),
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required],
             errorCallback: (_) => isValid = false,
@@ -44,7 +44,7 @@ class LoginForm extends StatelessWidget {
               InkWell(
                 onTap: controller.goToForgotPassword,
                 child: CuiaButtons.link(
-                  "Esqueceu a senha?",
+                  "login-page-forgot-password-link".i18n(),
                   onTap: controller.goToForgotPassword,
                 ),
               ),
@@ -52,7 +52,7 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaButtons.elevated(
-            "Entrar",
+            "login-page-button-submit".i18n(),
             onTap: () async {
               isValid = true;
               _formKey.currentState!.validate();
@@ -68,7 +68,7 @@ class LoginForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CuiaText(
-                "Não possui uma conta?",
+                "login-page-dont-account".i18n(),
                 style: GoogleFonts.poppins(
                   color: const Color(0xff393d6e),
                   fontSize: 16,
@@ -77,7 +77,7 @@ class LoginForm extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               CuiaButtons.link(
-                "Cadastre-se",
+                "login-page-dont-account-link".i18n(),
                 onTap: controller.goToRegister,
               ),
             ],

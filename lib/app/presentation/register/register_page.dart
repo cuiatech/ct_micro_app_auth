@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/presentation/register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
@@ -50,15 +52,11 @@ class RegisterPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CuiaText.headline1("Cadastre-se"),
+                          CuiaText.headline1("register-page-title".i18n()),
                           const SizedBox(height: 33),
-                          CuiaText.subtitle1(
-                            "Por favor, preencha suas informações abaixo",
-                          ),
+                          CuiaText.subtitle1("register-page-subtitle".i18n()),
                           const SizedBox(height: 33),
-                          RegisterForm(
-                            controller: controller,
-                          ),
+                          RegisterForm(controller: controller),
                         ],
                       ),
                     ),
