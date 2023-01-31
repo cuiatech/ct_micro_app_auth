@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/auth_routers.dart';
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
 import 'package:flut_micro_app_auth/app/presentation/forgot_password/forgot_password_page.dart';

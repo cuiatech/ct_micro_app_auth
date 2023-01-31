@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
@@ -14,11 +16,11 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     bool isValid = true;
 
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         children: [
           CuiaTextFormField(
@@ -55,7 +57,7 @@ class LoginForm extends StatelessWidget {
             "login-page-button-submit".i18n(),
             onTap: () async {
               isValid = true;
-              _formKey.currentState!.validate();
+              formKey.currentState!.validate();
               if (isValid) {
                 await controller.submit(context);
               }
