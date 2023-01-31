@@ -6,7 +6,7 @@ import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 
-class ForgotPasswordForm extends StatelessWidget {
+class ForgotPasswordForm extends StatefulWidget {
   const ForgotPasswordForm({
     Key? key,
     required this.controller,
@@ -15,16 +15,22 @@ class ForgotPasswordForm extends StatelessWidget {
   final ForgotPasswordController controller;
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    bool isValid = true;
+  State<ForgotPasswordForm> createState() => _ForgotPasswordFormState();
+}
 
+class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
+  final formKey = GlobalKey<FormState>();
+  bool isValid = true;
+  bool loading = false;
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: formKey,
       child: Column(
         children: [
           CuiaTextFormField(
-            controller: controller.emailTextController,
+            controller: widget.controller.emailTextController,
             hintText: "forgot-password-page-email-field".i18n(),
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
@@ -36,7 +42,9 @@ class ForgotPasswordForm extends StatelessWidget {
               isValid = true;
               formKey.currentState!.validate();
               if (isValid) {
-                await controller.submit(context);
+                setState(() => loading = true);
+                await widget.controller.submit(context);
+                setState(() => loading = false);
               }
             },
           ),
@@ -55,7 +63,7 @@ class ForgotPasswordForm extends StatelessWidget {
               const SizedBox(width: 16),
               CuiaButtons.link(
                 "register-page-you-have-account-link".i18n(),
-                onTap: controller.goToLogin,
+                onTap: widget.controller.goToLogin,
               ),
             ],
           ),

@@ -7,7 +7,7 @@ import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 
-class UpdatePasswordForm extends StatelessWidget {
+class UpdatePasswordForm extends StatefulWidget {
   const UpdatePasswordForm({
     Key? key,
     required this.controller,
@@ -18,16 +18,23 @@ class UpdatePasswordForm extends StatelessWidget {
   final String code;
 
   @override
+  State<UpdatePasswordForm> createState() => _UpdatePasswordFormState();
+}
+
+class _UpdatePasswordFormState extends State<UpdatePasswordForm> {
+  final formKey = GlobalKey<FormState>();
+  bool isValid = true;
+  bool loading = false;
+
+  @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    bool isValid = true;
     return Form(
       key: formKey,
       child: Column(
         children: [
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: controller.passwordTextController,
+            controller: widget.controller.passwordTextController,
             hintText: "update-password-page-new-password-field".i18n(),
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required, Rule.password],
@@ -36,7 +43,7 @@ class UpdatePasswordForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: controller.repasswordTextController,
+            controller: widget.controller.repasswordTextController,
             hintText: "update-password-page-repeat-new-password-field".i18n(),
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required, Rule.password],
@@ -50,7 +57,9 @@ class UpdatePasswordForm extends StatelessWidget {
               isValid = true;
               formKey.currentState!.validate();
               if (isValid) {
-                await controller.submit(context, code);
+                setState(() => loading = true);
+                await widget.controller.submit(context, widget.code);
+                setState(() => loading = false);
               }
             },
           ),
@@ -70,7 +79,7 @@ class UpdatePasswordForm extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               InkWell(
-                onTap: controller.goToLogin,
+                onTap: widget.controller.goToLogin,
                 child: Text(
                   "register-page-you-have-account-link".i18n(),
                   style: GoogleFonts.poppins(

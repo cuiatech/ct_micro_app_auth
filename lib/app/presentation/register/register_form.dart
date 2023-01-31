@@ -6,7 +6,7 @@ import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 
-class RegisterForm extends StatelessWidget {
+class RegisterForm extends StatefulWidget {
   const RegisterForm({
     Key? key,
     required this.controller,
@@ -15,15 +15,22 @@ class RegisterForm extends StatelessWidget {
   final RegisterController controller;
 
   @override
+  State<RegisterForm> createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  final formKey = GlobalKey<FormState>();
+  bool isValid = true;
+  bool loading = false;
+
+  @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    bool isValid = true;
     return Form(
       key: formKey,
       child: Column(
         children: [
           CuiaTextFormField(
-            controller: controller.nameTextController,
+            controller: widget.controller.nameTextController,
             hintText: "register-page-name-field".i18n(),
             prefixIcon: CuiaIcons.profile(),
             validateRules: const [Rule.required, Rule.fullname],
@@ -31,7 +38,7 @@ class RegisterForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: controller.emailTextController,
+            controller: widget.controller.emailTextController,
             hintText: "register-page-email-field".i18n(),
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
@@ -39,7 +46,7 @@ class RegisterForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: controller.passwordTextController,
+            controller: widget.controller.passwordTextController,
             hintText: "register-page-password-field".i18n(),
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required, Rule.password],
@@ -53,7 +60,9 @@ class RegisterForm extends StatelessWidget {
               isValid = true;
               formKey.currentState!.validate();
               if (isValid) {
-                await controller.submit(context);
+                setState(() => loading = true);
+                await widget.controller.submit(context);
+                setState(() => loading = false);
               }
             },
           ),
@@ -73,7 +82,7 @@ class RegisterForm extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               InkWell(
-                onTap: controller.goToLogin,
+                onTap: widget.controller.goToLogin,
                 child: Text(
                   "register-page-you-have-account-link".i18n(),
                   style: GoogleFonts.poppins(

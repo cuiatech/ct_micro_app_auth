@@ -6,7 +6,7 @@ import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
     required this.controller,
@@ -15,16 +15,22 @@ class LoginForm extends StatelessWidget {
   final LoginController controller;
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    bool isValid = true;
+  State<LoginForm> createState() => _LoginFormState();
+}
 
+class _LoginFormState extends State<LoginForm> {
+  final formKey = GlobalKey<FormState>();
+  bool isValid = true;
+  bool loading = false;
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: formKey,
       child: Column(
         children: [
           CuiaTextFormField(
-            controller: controller.emailTextController,
+            controller: widget.controller.emailTextController,
             hintText: "login-page-email-field".i18n(),
             prefixIcon: CuiaIcons.shape(),
             validateRules: const [Rule.required, Rule.email],
@@ -32,7 +38,7 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 33),
           CuiaTextFormField(
-            controller: controller.passwordTextController,
+            controller: widget.controller.passwordTextController,
             hintText: "login-page-password-field".i18n(),
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required],
@@ -44,10 +50,10 @@ class LoginForm extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               InkWell(
-                onTap: controller.goToForgotPassword,
+                onTap: widget.controller.goToForgotPassword,
                 child: CuiaButtons.link(
                   "login-page-forgot-password-link".i18n(),
-                  onTap: controller.goToForgotPassword,
+                  onTap: widget.controller.goToForgotPassword,
                 ),
               ),
             ],
@@ -55,11 +61,14 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 33),
           CuiaButtons.elevated(
             "login-page-button-submit".i18n(),
+            loading: loading,
             onTap: () async {
               isValid = true;
               formKey.currentState!.validate();
               if (isValid) {
-                await controller.submit(context);
+                setState(() => loading = true);
+                await widget.controller.submit(context);
+                setState(() => loading = false);
               }
             },
           ),
@@ -80,7 +89,7 @@ class LoginForm extends StatelessWidget {
               const SizedBox(width: 16),
               CuiaButtons.link(
                 "login-page-dont-account-link".i18n(),
-                onTap: controller.goToRegister,
+                onTap: widget.controller.goToRegister,
               ),
             ],
           ),
