@@ -1,9 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages, use_build_context_synchronously
 
-import 'package:flut_micro_app_auth/app/auth_routers.dart';
-import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
-import 'package:flut_micro_commons_auth/app/domain/usecases/user_forgot_password_usecase.dart';
-import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
+import 'package:ct_micro_app_auth/app/auth_routers.dart';
+import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
+import 'package:ct_micro_commons_auth/app/domain/usecases/user_forgot_password_usecase.dart';
+import 'package:ct_micro_commons_ds/ct_micro_commons_ds.dart';
 import 'package:flutter/material.dart';
 
 final $ForgotPasswordController = Bind.singleton(

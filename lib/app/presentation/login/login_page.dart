@@ -1,10 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:flut_micro_app_auth/app/presentation/login/login_controller.dart';
+import 'package:ct_micro_app_auth/app/presentation/login/login_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
-import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
-import 'package:flut_micro_commons_ds/flut_micro_commons_ds.dart';
+import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
+import 'package:ct_micro_commons_shared/ct_micro_commons_shared.dart';
+import 'package:ct_micro_commons_ds/ct_micro_commons_ds.dart';
 
 import '../../shared/widgets/left_panel.dart';
 import 'login_form.dart';
