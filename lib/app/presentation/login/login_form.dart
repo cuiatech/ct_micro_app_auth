@@ -43,6 +43,7 @@ class _LoginFormState extends State<LoginForm> {
             prefixIcon: CuiaIcons.lock(),
             validateRules: const [Rule.required],
             errorCallback: (_) => isValid = false,
+            onFieldSubmitted: (_) => _login(),
             obscureText: true,
           ),
           const SizedBox(height: 33),
@@ -62,15 +63,7 @@ class _LoginFormState extends State<LoginForm> {
           CuiaButtons.elevated(
             "login-page-button-submit".i18n(),
             loading: loading,
-            onTap: () async {
-              isValid = true;
-              formKey.currentState!.validate();
-              if (isValid) {
-                setState(() => loading = true);
-                await widget.controller.submit(context);
-                setState(() => loading = false);
-              }
-            },
+            onTap: _login,
           ),
           const SizedBox(height: 60),
           Row(
@@ -96,5 +89,15 @@ class _LoginFormState extends State<LoginForm> {
         ],
       ),
     );
+  }
+
+  void _login() async {
+    isValid = true;
+    formKey.currentState!.validate();
+    if (isValid) {
+      setState(() => loading = true);
+      await widget.controller.submit(context);
+      setState(() => loading = false);
+    }
   }
 }
