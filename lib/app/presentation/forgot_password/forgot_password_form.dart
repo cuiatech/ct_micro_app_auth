@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:ct_micro_app_auth/app/presentation/forgot_password/forgot_password_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
